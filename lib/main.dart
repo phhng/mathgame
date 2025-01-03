@@ -8,6 +8,7 @@ import 'screens/profile_screen.dart';
 import 'navi_bar/dropdown.dart'; //3 examples
 import 'navi_bar/navi_rail.dart';
 import 'navi_bar/custom_tab_bar.dart';
+import 'screens/texttospeech_speechtotext.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const CustomTabBarsPage(),
+      home: SpeechTextApp(),
     );
   }
 }
