@@ -34,12 +34,9 @@ final List<ItemBasket> _items = [
   ItemBasket(
     uid: '1',
     name: 'Apple',
-    imageItem: const NetworkImage(
-        'https://png.pngtree.com/png-vector/20231017/ourmid/pngtree-fresh-apple-fruit-red-png-image_10203073.png'),
-    imageFull: const NetworkImage(
-        'https://media.istockphoto.com/id/137349326/photo/jonagold-apples-in-a-basket.jpg?s=612x612&w=0&k=20&c=WNKr9Lz-XPM21ljSKCnhr1AUeU-wtofakzvYiMc6lYg='),
-    imageEmpty: const NetworkImage(
-        'https://media.istockphoto.com/id/137349326/photo/jonagold-apples-in-a-basket.jpg?s=612x612&w=0&k=20&c=WNKr9Lz-XPM21ljSKCnhr1AUeU-wtofakzvYiMc6lYg='),
+    imageItem: 'assets/apple.png',
+    imageFull: 'assets/full_basket.png',
+    imageEmpty: 'assets/empty_basket.png',
     amount: _num1,
   ),
 ];
@@ -58,12 +55,10 @@ class _CountingGameState extends State<CountingGame>
   final List<PlayerBasket> _playerItems = [
     PlayerBasket(
       name: 'Số quả táo có trong giỏ:',
-      imageItem: const NetworkImage(
-          'https://png.pngtree.com/png-vector/20231017/ourmid/pngtree-fresh-apple-fruit-red-png-image_10203073.png'),
-      imageEmpty: const NetworkImage(
-          'https://thumbs.dreamstime.com/b/empty-basket-6544187.jpg'),
-      imageFull: const NetworkImage(
-          'https://png.pngtree.com/png-vector/20231017/ourmid/pngtree-fresh-apple-fruit-red-png-image_10203073.png'),
+
+      imageItem: 'assets/apple.png',
+      imageFull: 'assets/full_basket.png',
+      imageEmpty: 'assets/empty_basket.png',
       amount: _num2,
     ),
   ];
@@ -219,7 +214,7 @@ class _CountingGameState extends State<CountingGame>
                 dragAnchorStrategy: pointerDragAnchorStrategy,
                 feedback: DraggingListItem(
                   dragKey: _draggableKey,
-                  photoProvider: item.imageItem,
+                  photoProvider: AssetImage(item.imageItem),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 6),
@@ -227,7 +222,9 @@ class _CountingGameState extends State<CountingGame>
                     builder: (context, candidateCustomers, rejectedCustomers) {
                       return ReusableCard(
                         title: item.name,
-                        image: item.hasItems ? item.imageFull : item.imageEmpty,
+                        image: item.hasItems
+                            ? AssetImage(item.imageFull)
+                            : AssetImage(item.imageEmpty),
                         highlighted: candidateCustomers.isNotEmpty,
                         itemCount: item.amount,
                       );
@@ -245,7 +242,9 @@ class _CountingGameState extends State<CountingGame>
                 builder: (context, candidateCustomers, rejectedCustomers) {
                 return ReusableCard(
                   title: item.name,
-                  image: item.hasItems ? item.imageFull : item.imageEmpty,
+                  image: item.hasItems
+                      ? AssetImage(item.imageFull)
+                      : AssetImage(item.imageEmpty),
                   highlighted: candidateCustomers.isNotEmpty,
                   itemCount: item.amount,
                 );
@@ -309,8 +308,7 @@ class _CountingGameState extends State<CountingGame>
             ? ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                        16), // Adjust the radius as needed
+                    borderRadius: BorderRadius.circular(16),
                   ),
                   backgroundColor: Colors.deepPurpleAccent, // Background color
                 ),
@@ -332,15 +330,15 @@ class _CountingGameState extends State<CountingGame>
                 dragAnchorStrategy: pointerDragAnchorStrategy,
                 feedback: DraggingListItem(
                   dragKey: _draggableKey,
-                  photoProvider: player.imageItem,
+                  photoProvider: AssetImage(player.imageItem),
                 ),
                 child: DragTarget<ItemBasket>(
                   builder: (context, candidateItems, rejectedItems) {
                     return ReusableCard(
                       title: player.name,
                       image: player.hasItems
-                          ? player.imageFull
-                          : player.imageEmpty,
+                          ? AssetImage(player.imageFull)
+                          : AssetImage(player.imageEmpty),
                       itemCount: player.amount,
                       highlighted: candidateItems.isNotEmpty,
                     );
@@ -359,7 +357,9 @@ class _CountingGameState extends State<CountingGame>
                   return ReusableCard(
                     title: player.name,
                     image:
-                        player.hasItems ? player.imageFull : player.imageEmpty,
+                        player.hasItems
+                            ? AssetImage(player.imageFull)
+                            : AssetImage(player.imageEmpty),
                     itemCount: player.amount,
                     highlighted: candidateItems.isNotEmpty,
                   );
@@ -371,7 +371,7 @@ class _CountingGameState extends State<CountingGame>
                   );
                 },
               ),
-        const SizedBox(height: 3),
+        // const SizedBox(height: 3),
         Text(
           player.name,
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -408,7 +408,7 @@ class _CountingGameState extends State<CountingGame>
                 ),
           ),
         ),
-        const SizedBox(height: 50),
+        const SizedBox(height: 70),
       ],
     );
   }
@@ -496,8 +496,8 @@ class DraggingListItem extends StatelessWidget {
         key: dragKey,
         borderRadius: BorderRadius.circular(12),
         child: SizedBox(
-          height: 150,
-          width: 150,
+          height: 100,
+          width: 100,
           child: Opacity(
             opacity: 0.85,
             child: Image(

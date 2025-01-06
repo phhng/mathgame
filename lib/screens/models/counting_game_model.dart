@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class ItemBasket {
   ItemBasket({
     required this.uid,
@@ -12,9 +10,9 @@ class ItemBasket {
 
   final String uid;
   final String name;
-  final ImageProvider imageItem;
-  final ImageProvider imageFull;
-  final ImageProvider imageEmpty;
+  final String imageItem;
+  final String imageFull;
+  final String imageEmpty;
   int amount;
 
   bool get hasItems => amount != 0;
@@ -30,9 +28,9 @@ class PlayerBasket {
   });
 
   final String name;
-  final ImageProvider imageItem;
-  final ImageProvider imageFull;
-  final ImageProvider imageEmpty;
+  final String imageItem;
+  final String imageFull;
+  final String imageEmpty;
   int amount;
 
   bool get hasItems => amount != 0;
