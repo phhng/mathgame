@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../games/counting_game.dart';
+import 'package:mathgame/screens/games/counting_game.dart';
 
 class GameScreen extends StatefulWidget {
   @override

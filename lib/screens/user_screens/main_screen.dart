@@ -1,30 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:mathgame/screens/user_screens/classroom.dart';
 import 'game_screen.dart';
 import 'profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
+  final String username; // Add username field
+
+  const MainScreen({super.key, required this.username}); // Accept username as parameter
+
   @override
   _MainScreenState createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
-
-  final List<Widget> _screens = [
-    Container(),  // Placeholder for other screens
-    ListView(),
-    GameScreen(), // Game screen will be displayed when selected
-    ListView(),
-    ProfilePage1(),
-  ];
-
-  double _scale = 1.0; // Scale value for the button animation
-
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _screens = [
+      Container(),  // Placeholder for other screens
+      ListView(),
+      GameScreen(), // Game screen will be displayed when selected
+      ClassroomScreen(username: widget.username),  // Pass username to ClassroomScreen
+      ProfilePage1(),
+    ];
+
+  double _scale = 1.0; // Scale value for the button animation
     return Scaffold(
       appBar: AppBar(
-        // title: Text('Main Screen'),
+        // title: Text('Main Screen',),
         backgroundColor: Colors.deepPurpleAccent,
         foregroundColor: Colors.white,
       ),
