@@ -29,7 +29,7 @@ class Auth {
       "password": password,
       "initials": initials,
       "role": role,
-      "phone": phone,
+      "phoneNumber": phone,
       // "otp": otp
     };
 

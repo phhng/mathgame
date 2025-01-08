@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:mathgame/screens/games/counting_game.dart';
 
 class GameScreen extends StatefulWidget {
+  final String username;
+
+  const GameScreen({super.key, required this.username});
   @override
   _GameScreenState createState() => _GameScreenState();
 }
@@ -67,7 +69,7 @@ class _GameScreenState extends State<GameScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => _navigateToScreen(index),
+            builder: (context) => _navigateToScreen(index,widget.username),
           ),
         );
         Future.delayed(Duration(milliseconds: 150), () {
@@ -112,10 +114,10 @@ class _GameScreenState extends State<GameScreen> {
   }
 }
 
-Widget _navigateToScreen(int boxIndex) {
+Widget _navigateToScreen(int boxIndex,String user) {
   switch (boxIndex) {
     case 0:
-      return const CountingGame(); // Replace with your actual screen
+      return CountingGame(username: user); // Replace with your actual screen
     case 1:
       // return const Box2Screen(); // Replace with your actual screen
     case 2:

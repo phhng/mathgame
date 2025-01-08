@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathgame/services/game_points_service.dart';
 import 'package:mathgame/utils/math_function.dart';
 import 'dart:math';
 import '../models/counting_game_model.dart';
@@ -43,7 +44,9 @@ final List<ItemBasket> _items = [
 
 @immutable
 class CountingGame extends StatefulWidget {
-  const CountingGame({super.key});
+  final String username;
+
+  const CountingGame({super.key, required this.username});
 
   @override
   State<CountingGame> createState() => _CountingGameState();
@@ -94,7 +97,7 @@ class _CountingGameState extends State<CountingGame>
   bool _showBadge = false;
   String _buttonText = "Xác nhận";
 
-  void _checkAnswer(bool isCorrect) {
+  void _checkAnswer(bool isCorrect) async{
     setState(() {
       if (isCorrect) {
         resultMessage = _correctAns;
@@ -124,7 +127,19 @@ class _CountingGameState extends State<CountingGame>
           ),
           duration: const Duration(seconds: 2), // Snackbar duration
         ),
+
       );
+      // Update points in the backend
+      String username = widget.username; // Replace with actual username
+      int pointsToAdd = 100; // Points to add, you can change this if needed
+
+      bool success = await GameService().updatePoints(username, pointsToAdd);
+
+      if (success) {
+        print('Points updated successfully!');
+      } else {
+        print('Failed to update points.');
+      }
     }
   }
 

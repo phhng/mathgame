@@ -19,7 +19,7 @@ class _MainScreenState extends State<MainScreen> {
     final List<Widget> _screens = [
       Container(),  // Placeholder for other screens
       ListView(),
-      GameScreen(), // Game screen will be displayed when selected
+      GameScreen(username: widget.username), // Game screen will be displayed when selected
       ClassroomScreen(username: widget.username),  // Pass username to ClassroomScreen
       ProfilePage1(),
     ];
