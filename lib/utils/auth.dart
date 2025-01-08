@@ -19,6 +19,8 @@ class Auth {
     required String password,
     required String initials,
     required String role,
+    required String phone,
+    // required String otp,
   }) async {
     // Tạo body để gửi lên API
     Map<String, dynamic> body = {
@@ -27,6 +29,8 @@ class Auth {
       "password": password,
       "initials": initials,
       "role": role,
+      "phone": phone,
+      // "otp": otp
     };
 
     // Gọi API đăng ký thông qua ApiClient

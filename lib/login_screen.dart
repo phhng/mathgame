@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mathgame/screens/admin_screen.dart';
-import 'package:mathgame/screens/user_screens//main_screen.dart';
+import 'package:mathgame/screens/user_screens/main_screen.dart';
 import 'package:mathgame/screens/registration_screen.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mathgame/utils/auth.dart';
+import 'package:mathgame/screens/teacher_screens/teacher_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -44,6 +45,11 @@ class _LoginScreenState extends State<LoginScreen> {
             context,
             MaterialPageRoute(builder: (context) => AdminScreen(username: username)),
           );
+        } else if(role == "Teacher"){
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => TeacherScreen(username: username)),
+          );
         } else {
           Navigator.pushReplacement(
             context,
@@ -67,6 +73,11 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => AdminScreen(username: username)),
+        );
+      } else if(savedRole == "Teacher"){
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => TeacherScreen(username: username)),
         );
       } else {
         Navigator.pushReplacement(
