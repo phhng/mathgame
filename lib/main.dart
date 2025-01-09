@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mathgame/login_screen.dart';
+import 'package:mathgame/screens/login_screen.dart';
 import 'package:mathgame/screens/user_screens/main_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';

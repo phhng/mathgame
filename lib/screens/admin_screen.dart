@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
 import '../config/config_url.dart';
-import '../login_screen.dart';
+import 'login_screen.dart';
 
 class AdminScreen extends StatelessWidget {
   final String username;

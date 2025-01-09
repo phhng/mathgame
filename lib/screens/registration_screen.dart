@@ -237,7 +237,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   controller: _roleController,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    hintText: 'Vai trò (Admin/User/Teacher)',
+                    hintText: 'Vai trò (User/Teacher)',
                     filled: true,
                     fillColor: Colors.grey[100],
                     border: OutlineInputBorder(
