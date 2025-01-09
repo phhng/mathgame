@@ -40,12 +40,12 @@ class _LoginScreenState extends State<LoginScreen> {
       String? role = prefs.getString('roles');
       if (token != null && username != null) {
         // Nếu có token và username thì tự động đăng nhập
-        if (role == "Admin") {
+        /*if (role == "Admin") {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => AdminScreen(username: username)),
           );
-        } else if(role == "Teacher"){
+        } else*/ if(role == "Teacher"){
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => TeacherScreen(username: username)),
@@ -69,12 +69,12 @@ class _LoginScreenState extends State<LoginScreen> {
     if (!mounted) return;
 
     if (token != null && username != null) {
-      if (savedRole == "Admin") {
+      /*if (savedRole == "Admin") {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => AdminScreen(username: username)),
         );
-      } else if(savedRole == "Teacher"){
+      } else */if(savedRole == "Teacher"){
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => TeacherScreen(username: username)),
@@ -117,10 +117,10 @@ class _LoginScreenState extends State<LoginScreen> {
       await prefs.setString('roles', role);
       await prefs.setBool('remember_me', _rememberMe); // Lưu trạng thái ghi nhớ đăng nhập
 
-      if (role == 'Admin') {
+      if (role == 'Teacher') {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => AdminScreen(username: _usernameController.text)),
+          MaterialPageRoute(builder: (context) => TeacherScreen(username: _usernameController.text)),
         );
       } else {
         Navigator.pushReplacement(
@@ -258,14 +258,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: ElevatedButton(
                     onPressed: _isLoading ? null : _handleLogin,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
+                      backgroundColor: Colors.deepPurpleAccent,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
                     child: _isLoading
                         ? const CircularProgressIndicator(color: Colors.white)
-                        : const Text('Đăng nhập', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        : const Text('Đăng nhập', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -277,7 +277,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => const RegistrationScreen()));
                       },
-                      child: const Text('Đăng ký ngay', style: TextStyle(color: Colors.blue)),
+                      child: const Text('Đăng ký ngay', style: TextStyle(color: Colors.deepPurpleAccent)),
                     ),
                   ],
                 ),

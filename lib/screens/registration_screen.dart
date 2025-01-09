@@ -130,7 +130,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blue[700],
+                    color: Colors.deepPurpleAccent,
                   ),
                 ),
                 const SizedBox(height: 40),
@@ -256,7 +256,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   child: ElevatedButton(
                     onPressed: _isLoading ? null : _handleRegister,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue[700],
+                      backgroundColor: Colors.deepPurpleAccent,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -276,6 +276,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -291,7 +292,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       },
                       child: const Text(
                         'Đăng nhập',
-                        style: TextStyle(color: Colors.blue),
+                        style: TextStyle(color: Colors.deepPurpleAccent),
                       ),
                     ),
                   ],
